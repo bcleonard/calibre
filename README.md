@@ -16,7 +16,6 @@ The library directory will hold your books & database.  addbooks will be used to
 for the instructions below.  Just make sure you create it prior to starting the container.
 ### To run the container:
 ```sh
-docker run -ti -v /data:/data -p 8080:8080 bcleonard/calibre
 docker run -v /data:/data -p 8080:8080 bcleonard/calibre
 ```
 
