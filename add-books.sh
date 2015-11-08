@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DIRNAME=/addbooks
-LIBNAME=/library
+DIRNAME=/data/addbooks
+LIBNAME=/data/library
 CALIBREDB=/usr/bin/calibredb
 CAL_OPT="add -1 -r"
 export LANG=en_US.UTF-8
