@@ -1,4 +1,4 @@
-FROM fedora:22
+FROM fedora:23
 MAINTAINER Bradley Leonard <bradley@stygianresearch.com> 
 
 # install basic development tools 
