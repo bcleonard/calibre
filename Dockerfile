@@ -6,7 +6,7 @@ MAINTAINER Bradley Leonard <bradley@stygianresearch.com>
 #  && dnf clean all
 
 # install calibre cronie
-RUN dnf -y install calibre cronie nginx php-gd php-fpm php-xml php-pdo php-mbstring php-intl
+RUN dnf -y install calibre cronie
 
 # create directories
 #RUN mkdir /library & mkdir /addbooks & mkdir /scripts
