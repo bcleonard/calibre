@@ -1,4 +1,0 @@
-#
-# minute hour day_of_month month day_of_week command
-#
-0 * * * * /scripts/add-books.sh
