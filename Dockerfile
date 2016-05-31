@@ -2,7 +2,7 @@ FROM fedora:23
 MAINTAINER Bradley Leonard <bradley@stygianresearch.com> 
 
 # install calibre cronie
-RUN dnf -y install calibre-2.49.0
+RUN dnf -y install calibre-2.53.0
 
 # create directories
 #RUN mkdir /library & mkdir /addbooks & mkdir /scripts

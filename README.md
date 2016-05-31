@@ -2,8 +2,7 @@
 
 This contains the docker file and all necessary files to build a docker container for calibre.
 
-Calibre (https://calibre-ebook.com) is probably the best e-book management system out there.  This docker container will run the 
-server portion only.
+Calibre (https://calibre-ebook.com) is probably the best e-book management system out there.  This docker container will run the server portion only.
 
 ### Preperation
 
