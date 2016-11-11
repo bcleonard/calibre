@@ -3,7 +3,7 @@
 DIRNAME=/data/addbooks
 LIBNAME=/data/library
 CALIBREDB=/usr/bin/calibredb
-CAL_OPT="add -1 -r"
+CAL_OPT="add -d -1 -r"
 STATUS_FILE=/data/add-books.is.running
 export LANG=en_US.UTF-8
 
