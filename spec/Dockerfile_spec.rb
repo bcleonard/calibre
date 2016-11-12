@@ -15,18 +15,14 @@ describe "Dockerfile" do
 
   end
 
-  describe package('net-tools') do
-    it { should be_installed }
+  it "installs the right version of fedora" do
+    expect(os_version).to include("Fedora release 24")
   end
 
   describe 'Dockerfile#config' do
     it 'should expose the calibre port' do
       expect(@image.json['ContainerConfig']['ExposedPorts']).to include("#{CALIBRE_PORT}/tcp")
     end
-  end
-
-  it "installs the right version of fedora" do
-    expect(os_version).to include("Fedora release 23")
   end
 
   describe package("calibre") do
@@ -63,7 +59,7 @@ describe "Dockerfile" do
         }
       )
 
-      @container.start('Binds' => ['/tmp/data:/data'])
+      @container.start('Binds' => ['/home/bradley/calibre/data:/data:Z'])
     end
 
     describe file('/data/library') do
