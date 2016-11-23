@@ -38,6 +38,12 @@ docker exec calibre /scripts/add-books.sh
 ```
 All the books in /home/books/addbooks will be added to the library, removed from the /home/books/addbooks directory and calibre notified.
 
+To remove books from the library:
+
+```sh
+docker exec calibre-cops /scripts/remove-books.sh -i <book_id>
+```
+
 ### Notes/Caveats/Issues:
 
 1.	Previous versions of the container used to automatically run the add-books.sh script hourly via cron.  In an effect to reduce the image size and with the available of the docker exec command, that functionality has been removed.
