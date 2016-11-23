@@ -16,6 +16,10 @@ RUN chmod 755 /scripts/startup.sh
 ADD add-books.sh /scripts/add-books.sh
 RUN chmod 755 /scripts/add-books.sh
 
+# add remove-books.sh
+ADD remove-books.sh /scripts/remove-books.sh
+RUN chmod 755 /scripts/remove-books.sh
+
 # Expose port
 EXPOSE 8080
 

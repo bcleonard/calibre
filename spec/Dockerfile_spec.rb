@@ -45,6 +45,10 @@ describe "Dockerfile" do
     it { should be_mode 755 }
   end
 
+  describe file('/scripts/remove-books.sh') do
+    it { should be_mode 755 }
+  end
+
   describe package('calibre') do
     it { should be_installed }
   end
@@ -62,9 +66,9 @@ describe "Dockerfile" do
       @container.start('Binds' => ['/home/bradley/calibre/data:/data:Z'])
     end
 
-    describe file('/data/library') do
-      it { should be_directory }
-    end
+#    describe file('/data/library') do
+#      it { should be_directory }
+#    end
 
     describe "running calibre server" do
 #      describe command('/usr/bin/netstat -tunl | /usr/bin/grep 8080') do
