@@ -16,7 +16,7 @@ describe "Dockerfile" do
   end
 
   it "installs the right version of fedora" do
-    expect(os_version).to include("Fedora release 24")
+    expect(os_version).to include("Fedora release 25")
   end
 
   describe 'Dockerfile#config' do
