@@ -3,7 +3,6 @@ MAINTAINER bradley leonard <bradley@leonard.pub>
 
 # install net-tools, required for serverspec to check ports
 # install calibre
-#RUN dnf clean all && dnf -y install procps-ng calibre-2.60.0
 RUN dnf clean all && dnf -y install procps-ng calibre
 
 # create directories

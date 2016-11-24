@@ -26,7 +26,7 @@ describe "Dockerfile" do
   end
 
   describe package("calibre") do
-    it { should be_installed.with_version('2.60.0') }
+    it { should be_installed.with_version('2.69.0') }
   end
 
   describe file('/data') do
