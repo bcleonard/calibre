@@ -16,7 +16,7 @@ describe "Dockerfile" do
   end
 
   it "installs the right version of fedora" do
-    expect(os_version).to include("Fedora release 25")
+    expect(os_version).to include("Fedora release 31")
   end
 
   describe 'Dockerfile#config' do
@@ -26,7 +26,7 @@ describe "Dockerfile" do
   end
 
   describe package("calibre") do
-    it { should be_installed.with_version('2.69.0') }
+    it { should be_installed.with_version('4.12.0') }
   end
 
   describe file('/data') do
@@ -49,39 +49,35 @@ describe "Dockerfile" do
     it { should be_mode 755 }
   end
 
-  describe package('calibre') do
-    it { should be_installed }
-  end
-
-  describe 'Dockerfile#running' do
-    before (:all) do
-      @container = Docker::Container.create(
-        'Image' => @image.id,
-        'HostConfig' => {
-          'Binds' => ['/tmp/data:/data'],
-          'PortBindings' => { "#{CALIBRE_PORT}/tcp" => [{ 'HostPort' => "#{CALIBRE_PORT}" }] }
-        }
-      )
-
-      @container.start('Binds' => ['/home/bradley/calibre/data:/data:Z'])
-    end
+#  describe 'Dockerfile#running' do
+#    before (:all) do
+#      @container = Docker::Container.create(
+#        'Image' => @image.id,
+#        'HostConfig' => {
+#          'Binds' => ['/tmp/data:/data'],
+#          'PortBindings' => { "#{CALIBRE_PORT}/tcp" => [{ 'HostPort' => "#{CALIBRE_PORT}" }] }
+#        }
+#      )
+#
+#      @container.start('Binds' => ['/home/bradley/calibre/data:/data:Z'])
+#    end
 
 #    describe file('/data/library') do
 #      it { should be_directory }
 #    end
 
-    describe "running calibre server" do
+#    describe "running calibre server" do
 #      describe command('/usr/bin/netstat -tunl | /usr/bin/grep 8080') do
 #        its(:exit_status) { should eq 0 }
 #      end
-      describe command('/usr/bin/ps -eaf | /usr/bin/grep calibre-server') do
-        its(:exit_status) { should eq 0 }
-      end 
-    end
-
-    after(:all) do
-      @container.kill
-      @container.delete(:force => true)
-    end
-  end
+#      describe command('/usr/bin/ps -eaf | /usr/bin/grep calibre-server') do
+#        its(:exit_status) { should eq 0 }
+#      end 
+#    end
+#
+#    after(:all) do
+#      @container.kill
+#      @container.delete(:force => true)
+#    end
+#  end
 end

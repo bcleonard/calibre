@@ -1,9 +1,11 @@
-FROM fedora:25
+FROM fedora:31
 MAINTAINER bradley leonard <bradley@leonard.pub>
 
-# install net-tools, required for serverspec to check ports
 # install calibre
-RUN dnf clean all && dnf -y install procps-ng calibre
+#RUN dnf -y install procps-ng calibre \
+RUN dnf -y --setopt=install_weak_deps=False --best install calibre \
+  && dnf clean all \
+  && rm -rf -- /var/cache/yum
 
 # create directories
 RUN mkdir /data && mkdir /scripts
