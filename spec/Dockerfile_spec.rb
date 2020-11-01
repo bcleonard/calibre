@@ -16,7 +16,7 @@ describe "Dockerfile" do
   end
 
   it "installs the right version of fedora" do
-    expect(os_version).to include("Fedora release 31")
+    expect(os_version).to include("Fedora release 33")
   end
 
   describe 'Dockerfile#config' do
@@ -26,7 +26,7 @@ describe "Dockerfile" do
   end
 
   describe package("calibre") do
-    it { should be_installed.with_version('4.12.0') }
+    it { should be_installed.with_version('4.23.0') }
   end
 
   describe file('/data') do
