@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LIBNAME=/data/library
-CALIBREDB=/usr/bin/calibredb
+CALIBREDB=/opt/calibre/calibredb
 CAL_OPT="remove"
 export LANG=en_US.UTF-8
 

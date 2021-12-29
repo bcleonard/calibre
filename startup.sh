@@ -3,4 +3,4 @@
 #
 # start calibre-server
 #
-/usr/bin/calibre-server /data/library
+/opt/calibre/calibre-server /data/library

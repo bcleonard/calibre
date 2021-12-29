@@ -1,11 +1,41 @@
-FROM fedora:35
-MAINTAINER bradley leonard <bradley@leonard.pub>
+FROM debian:11-slim
 
-# install calibre
+# set version lables
+ARG BUILD_DATE
+ARG VERSION
+ARG CALIBRE_VERSION=5.34.0
+ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
+LABEL MAINTAINER bradley leonard <bradley@leonard.pub>
+
+# prep system
+RUN \
+  echo "---===>>> prep system <<<===---" && \
+  apt-get update && \
+  apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    libfontconfig \
+    libgl1 \
+    python3 \
+    wget \
+    xz-utils && \
+  echo "---===>>> install calibre <<<===---" && \
+  mkdir -p /opt/calibre && \
+  curl -o \
+    /tmp/calibre-tarball.txz -L \
+    "$CALIBRE_URL" && \
+  tar xvf /tmp/calibre-tarball.txz -C /opt/calibre && \
+  echo "---===>>> cleanup <<<===---" && \
+  apt-get clean && \
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/
+
 #RUN dnf -y install procps-ng calibre \
-RUN dnf -y --setopt=install_weak_deps=False --best install calibre \
-  && dnf clean all \
-  && rm -rf -- /var/cache/yum
+#RUN dnf -y --setopt=install_weak_deps=False --best install calibre \
+#  && dnf clean all \
+#  && rm -rf -- /var/cache/yum
 
 # create directories
 RUN mkdir /data && mkdir /scripts
