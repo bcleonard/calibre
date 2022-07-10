@@ -3,7 +3,7 @@ FROM debian:11-slim
 # set version lables
 ARG BUILD_DATE
 ARG VERSION
-ARG CALIBRE_VERSION=5.34.0
+ARG CALIBRE_VERSION=5.44.0
 ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
 LABEL MAINTAINER bradley leonard <bradley@leonard.pub>
 
@@ -23,19 +23,15 @@ RUN \
   mkdir -p /opt/calibre && \
   curl -o \
     /tmp/calibre-tarball.txz -L \
-    "$CALIBRE_URL" && \
+    $CALIBRE_URL && \
   tar xvf /tmp/calibre-tarball.txz -C /opt/calibre && \
   echo "---===>>> cleanup <<<===---" && \
+  apt autoremove -y && \
   apt-get clean && \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/
-
-#RUN dnf -y install procps-ng calibre \
-#RUN dnf -y --setopt=install_weak_deps=False --best install calibre \
-#  && dnf clean all \
-#  && rm -rf -- /var/cache/yum
 
 # create directories
 RUN mkdir /data && mkdir /scripts
