@@ -1,9 +1,9 @@
-FROM debian:11-slim
+FROM debian:12-slim
 
 # set version lables
 ARG BUILD_DATE
 ARG VERSION
-ARG CALIBRE_VERSION=5.44.0
+ARG CALIBRE_VERSION=6.26.0
 ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
 LABEL MAINTAINER bradley leonard <bradley@leonard.pub>
 
@@ -19,12 +19,6 @@ RUN \
     python3 \
     wget \
     xz-utils && \
-  echo "---===>>> install calibre <<<===---" && \
-  mkdir -p /opt/calibre && \
-  curl -o \
-    /tmp/calibre-tarball.txz -L \
-    $CALIBRE_URL && \
-  tar xvf /tmp/calibre-tarball.txz -C /opt/calibre && \
   echo "---===>>> cleanup <<<===---" && \
   apt autoremove -y && \
   apt-get clean && \
@@ -32,6 +26,16 @@ RUN \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/
+
+# install calibe
+RUN \
+  echo "---===>>> install calibre <<<===---" && \
+  mkdir -p /opt/calibre && \
+  curl -o \
+    /tmp/calibre-tarball.txz -L \
+    $CALIBRE_URL && \ 
+    tar xvf /tmp/calibre-tarball.txz -C /opt/calibre && \
+  rm -rf -- /tmp/calibre-tarball.txz
 
 # create directories
 RUN mkdir /data && mkdir /scripts
