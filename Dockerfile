@@ -3,7 +3,7 @@ FROM debian:12-slim
 # set version lables
 ARG BUILD_DATE
 ARG VERSION
-ARG CALIBRE_VERSION=6.26.0
+ARG CALIBRE_VERSION=7.5.1
 ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
 LABEL MAINTAINER bradley leonard <bradley@leonard.pub>
 
