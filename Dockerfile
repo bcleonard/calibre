@@ -1,9 +1,9 @@
 FROM debian:12-slim
 
-# set version lables
+# set version labels
 ARG BUILD_DATE
 ARG VERSION
-ARG CALIBRE_VERSION=7.5.1
+ARG CALIBRE_VERSION=7.6.0
 ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
 LABEL MAINTAINER bradley leonard <bradley@leonard.pub>
 
@@ -18,6 +18,11 @@ RUN \
     libgl1 \
     python3 \
     wget \
+    libegl1 \
+    libxkbcommon0 \
+    libopengl0 \
+    libnss3 \
+    jq \
     xz-utils && \
   echo "---===>>> cleanup <<<===---" && \
   apt autoremove -y && \
@@ -51,6 +56,14 @@ RUN chmod 755 /scripts/add-books.sh
 # add remove-books.sh
 ADD remove-books.sh /scripts/remove-books.sh
 RUN chmod 755 /scripts/remove-books.sh
+
+# add get-book-info-books.sh
+ADD get-book-info.sh /scripts/get-book-info.sh
+RUN chmod 755 /scripts/get-book-info.sh
+
+# add update-missing-covers.sh
+ADD update-missing-covers.sh /scripts/update-missing-covers.sh
+RUN chmod 755 /scripts/update-missing-covers.sh
 
 # Expose port
 EXPOSE 8080
