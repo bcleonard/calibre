@@ -10,7 +10,7 @@ OPTIND=1
 if [ $# -ne 2 ]
 then
   echo ""
-  echo "usage: ${0} -i book_id_to_remove"
+  echo "usage: ${0} -i book_id_to_get_info"
   echo ""
   exit 1
 fi
