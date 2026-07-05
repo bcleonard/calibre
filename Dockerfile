@@ -1,9 +1,9 @@
 FROM debian:13-slim
 
 # set version labels
-ARG BUILD_DATE=02/17/2026
-ARG VERSION=v2026.02.17.01
-ARG CALIBRE_VERSION=9.2.1
+ARG BUILD_DATE=07/05/2026
+ARG VERSION=v2026.07.05.01
+ARG CALIBRE_VERSION=9.11.0
 ARG CALIBRE_URL="https://download.calibre-ebook.com/${CALIBRE_VERSION}/calibre-${CALIBRE_VERSION}-x86_64.txz"
 LABEL MAINTAINER="bradley leonard <bradley@leonard.pub>"
 
